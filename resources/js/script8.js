@@ -25,7 +25,7 @@ validatecustomer();
 var foodnames = [];
 var foodids = [];
 function validatecustomer() {
-    fetch("http://localhost:9021/invoice")
+    fetch("http://13.61.175.31/invoice")
         .then((response) => response.json())
         .then((json) => {
             {
@@ -41,7 +41,7 @@ function validatecustomer() {
         })
 }
 function customername(custid) {
-    var url = "http://localhost:9021/customer/" + custid;
+    var url = "http://13.61.175.31/customer/" + custid;
     fetch(url)
         .then((response) => response.json())
         .then((json) => {
@@ -50,7 +50,7 @@ function customername(custid) {
 }
 
 function showorders(invid) {
-    fetch("http://localhost:9021/invoiceItem")
+    fetch("http://13.61.175.31/invoiceItem")
         .then((response) => response.json())
         .then((json) => {
             {
@@ -58,7 +58,7 @@ function showorders(invid) {
                 json.forEach((invoiceItem) => {
                     if (invid == invoiceItem.invoice_id) {
                         var menu_id = invoiceItem.menu_id;
-                        var url = "http://localhost:9021/menu/" + menu_id;
+                        var url = "http://13.61.175.31/menu/" + menu_id;
                         fetch(url)
                             .then((response) => response.json())
                             .then((json) => {
@@ -87,7 +87,7 @@ function submitrating() {
         })
     }
     else {
-        fetch("http://localhost:9021/invoice")
+        fetch("http://13.61.175.31/invoice")
             .then((response) => response.json())
             .then((json) => {
                 {
@@ -113,7 +113,7 @@ function submitrating() {
     }
 }
 function updatedishratingobject(invid, menuid, rating) {
-    var url = "http://localhost:9021/avgRating/" + menuid;
+    var url = "http://13.61.175.31/avgRating/" + menuid;
     fetch(url)
         .then((response) => response.json())
         .then((json) => {
@@ -127,7 +127,7 @@ function updatedishratingobject(invid, menuid, rating) {
         })
 }
 function updatedishrating(updatemenuratingObject) {
-    fetch("http://localhost:9021/avgRating/update", {
+    fetch("http://13.61.175.31/avgRating/update", {
         method: 'PUT',
         body: JSON.stringify(updatemenuratingObject),
         headers: {
@@ -136,12 +136,12 @@ function updatedishrating(updatemenuratingObject) {
     })
 }
 function reviewsubmit(submitratingObject) {
-    fetch("http://localhost:9021/userReview/create", {
+    fetch("http://13.61.175.31/userReview/create", {
         method: 'POST',
         body: JSON.stringify(submitratingObject),
         headers: {
             "Content-type": "application/json; charset=UTF-8"
         }
     })
-    window.location.href = "http://localhost:9021/thankyou";
+    window.location.href = "http://13.61.175.31/thankyou";
 }

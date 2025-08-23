@@ -35,7 +35,7 @@ style.textContent = `
     `;
 document.head.appendChild(style);
 var prevOrders = document.getElementById("prevorders")
-fetch("http://localhost:9021/invoice")
+fetch("http://13.61.175.31/invoice")
     .then((response) => response.json())
     .then((json) => {
         {
@@ -61,7 +61,7 @@ function filltable() {
     for (var i = 0; i < prevOrders.rows.length; i++) {
         const custnamecell = prevOrders.rows[i].cells[4];
         var custid = Number(prevOrders.rows[i].cells[2].innerHTML)
-        url = "http://localhost:9021/customer/" + custid
+        url = "http://13.61.175.31/customer/" + custid
         fetch(url)
             .then((response) => response.json())
             .then((json) => {
@@ -73,7 +73,7 @@ function filltable() {
         const foodcell = prevOrders.rows[i].cells[5];
         const invid = Number(prevOrders.rows[i].cells[0].innerHTML)
         const totalcell = prevOrders.rows[i].cells[6];
-        fetch("http://localhost:9021/invoiceItem")
+        fetch("http://13.61.175.31/invoiceItem")
             .then((response) => response.json())
             .then((json) => {
                 {
@@ -85,7 +85,7 @@ function filltable() {
                         if (invoiceItem.invoice_id == invid) {
                             var quantity = invoiceItem.quantity;
                             var menuid = invoiceItem.menu_id;
-                            fetch("http://localhost:9021/menu")
+                            fetch("http://13.61.175.31/menu")
                                 .then((response) => response.json())
                                 .then((json) => {
                                     {

@@ -102,7 +102,7 @@ style.textContent = `
     `;
 document.head.appendChild(style);
 function loadTable() {
-  fetch("http://localhost:9021/menu")
+  fetch("http://13.61.175.31/menu")
     .then((response) => response.json())
     .then((json) => {
       console.log(json);
@@ -230,14 +230,14 @@ submibtn.addEventListener("click", function () {
       customer_name: customername,
       phone_no: customerphno
     }
-    fetch('http://localhost:9021/customer/create', {
+    fetch('http://13.61.175.31/customer/create', {
       method: 'POST',
       body: JSON.stringify(customerObject),
       headers: {
         "Content-type": "application/json; charset=UTF-8"
       }
     })
-    fetch("http://localhost:9021/customer")
+    fetch("http://13.61.175.31/customer")
       .then((response) => response.json())
       .then((data) => {
         var custid;
@@ -255,7 +255,7 @@ submibtn.addEventListener("click", function () {
           customer_id: customerid,
           charges_id: 1
         }
-        fetch('http://localhost:9021/invoice/create', {
+        fetch('http://13.61.175.31/invoice/create', {
           method: 'POST',
           body: JSON.stringify(invoiceObject),
           headers: {
@@ -263,7 +263,7 @@ submibtn.addEventListener("click", function () {
           }
         })
         var orders = document.getElementById("orders");
-        fetch("http://localhost:9021/invoice")
+        fetch("http://13.61.175.31/invoice")
           .then((response) => response.json())
           .then((data) => {
             var invid;
@@ -287,7 +287,7 @@ submibtn.addEventListener("click", function () {
               addinvoiceitem(invoiceItemObject)
             }
             function addinvoiceitem(invoiceItemObject) {
-              fetch('http://localhost:9021/invoiceItem/create', {
+              fetch('http://13.61.175.31/invoiceItem/create', {
                 method: 'POST',
                 body: JSON.stringify(invoiceItemObject),
                 headers: {
@@ -305,7 +305,7 @@ submibtn.addEventListener("click", function () {
 })
 function sendsms(orderId) {
   var phnototext = document.getElementById('phno').value;
-  var msgtosend = "Thanks for Dining with us Hope you enjoyed your meal! Kindly help us to improve by rating your experience below." + "http://localhost:9021/mydetails" + " your Order Id is " + orderId;
+  var msgtosend = "Thanks for Dining with us Hope you enjoyed your meal! Kindly help us to improve by rating your experience below." + "http://13.61.175.31/mydetails" + " your Order Id is " + orderId;
   var authorizationkey = "Your twilio key"
   var smsurl = "https://www.fast2sms.com/dev/bulkV2?authorization=${authorizationkey}&message=" + msgtosend + "&language=english&route=q&numbers=" + phnototext;
   var settings = {
@@ -320,7 +320,7 @@ function sendsms(orderId) {
   });
 }
 const batchTrack = document.getElementById("batchSelect");
-fetch("http://localhost:9021/foodType")
+fetch("http://13.61.175.31/foodType")
   .then((response) => response.json())
   .then((json) => {
     {
@@ -338,7 +338,7 @@ function filter() {
   var selectedValue = selecttag.options[selecttag.selectedIndex].value;
   document.getElementById("dishes").innerHTML = "";
   function allcat() {
-    fetch("http://localhost:9021/menu")
+    fetch("http://13.61.175.31/menu")
       .then((response) => response.json())
       .then((json) => {
         {

@@ -17,7 +17,7 @@ const frequency = []
 const TotalAmount = []
 const data = new Map();
 const dishnames = [];
-fetch("http://localhost:9021/invoiceItem")
+fetch("http://13.61.175.31/invoiceItem")
   .then((response) => response.json())
   .then((json) => {
     {
@@ -63,7 +63,7 @@ async function getdishname() {
   for (var i = 0; i < menuid.length; i++) {
     const menuidcol = i;
     var menu_id = menuid[i];
-    url = "http://localhost:9021/menu/" + menu_id;
+    url = "http://13.61.175.31/menu/" + menu_id;
     await fetch(url)
       .then((response) => response.json())
       .then((json) => {

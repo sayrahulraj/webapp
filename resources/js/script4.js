@@ -7,11 +7,11 @@ var invtaxestag = document.getElementById('taxes')
 var invfinamounttag = document.getElementById('finalamount')
 var invoicetag = document.getElementById('invoice');
 
-fetch("http://localhost:9021/customer")
+fetch("http://13.61.175.31/customer")
     .then((response) => response.json())
     .then((data) => {
         var custid = data.length;
-        url = "http://localhost:9021/customer/" + custid
+        url = "http://13.61.175.31/customer/" + custid
         fetch(url)
             .then((response) => response.json())
             .then((data) => {
@@ -21,11 +21,11 @@ fetch("http://localhost:9021/customer")
     })
 
 var invid;
-fetch("http://localhost:9021/invoice")
+fetch("http://13.61.175.31/invoice")
     .then((response) => response.json())
     .then((data) => {
         invid = data.length;
-        url = "http://localhost:9021/invoice/" + invid;
+        url = "http://13.61.175.31/invoice/" + invid;
         fetch(url)
             .then((res) => res.json())
             .then((info) => {
@@ -34,8 +34,8 @@ fetch("http://localhost:9021/invoice")
             })
     });
 
-url = "http://localhost:9021/invoice/" + invid;
-//        url="http://localhost:9021/invoice/2";
+url = "http://13.61.175.31/invoice/" + invid;
+//        url="http://13.61.175.31/invoice/2";
 fetch(url)
     .then((res) => res.json())
     .then((info) => {
@@ -47,7 +47,7 @@ fetch(url)
 
 
 var invItems = document.getElementById("invoice_items")
-fetch("http://localhost:9021/invoice")
+fetch("http://13.61.175.31/invoice")
     .then((response) => response.json())
     .then((json) => {
         {
@@ -73,7 +73,7 @@ function filltable() {
         const foodcell = invItems.rows[i].cells[2];
         //            const invid = Number(invItems.rows[i].cells[0].innerHTML)
         const invid = 2
-        fetch("http://localhost:9021/invoiceItem")
+        fetch("http://13.61.175.31/invoiceItem")
             .then((response) => response.json())
             .then((json) => {
                 {
@@ -83,7 +83,7 @@ function filltable() {
                         if (invoiceItem.invoice_id == invid) {
                             var quantity = invoiceItem.quantity;
                             var menuid = invoiceItem.menu_id;
-                            fetch("http://localhost:9021/menu")
+                            fetch("http://13.61.175.31/menu")
                                 .then((response) => response.json())
                                 .then((json) => {
                                     {
@@ -96,7 +96,7 @@ function filltable() {
                                     }
                                     foodcell.innerHTML = li;
                                     invtotaltag.innerHTML = total + `<i class="fa fa-rupee" style="margin-left:8%" aria-hidden="true"></i>`;
-                                    fetch("http://localhost:9021/taxes/1")
+                                    fetch("http://13.61.175.31/taxes/1")
                                         .then((response) => response.json())
                                         .then((data) => {
                                             var totaltax = 0;
